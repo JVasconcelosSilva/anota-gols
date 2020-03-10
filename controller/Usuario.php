@@ -11,17 +11,14 @@ class Usuario extends connection {
 
     public function cadastrarUsuario($nmUsuario, $nmLogin, $nmSenha, $nmEmail) {
 
-		$connection = new connection();
-		$con = $connection->OpenCon();
+        $connection = new connection();
+        $con = $connection->OpenCon();
 
-        $sql = "INSERT INTO usuario (nm_login, nm_senha, nm_email, nm_usuario)
-        VALUES ('$nmLogin', '$nmSenha', '$nmEmail', '$nmUsuario')";
+        $query = "INSERT INTO usuario (nm_login, nm_senha, nm_email, nm_usuario) VALUES('$nmLogin','$nmSenha','$nmEmail','$nmUsuario');";
         
-        mysqli_query($con, $sql);
-		if(mysqli_errno($con)){
-			throw new exception(mysqli_errno($con));
-		}
-		
+        if ($con->query($query) === FALSE){
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
 
         $connection->CloseCon($con);
     }
@@ -31,12 +28,17 @@ class Usuario extends connection {
 		$connection = new connection();
 		$con = $connection->OpenCon();
 
-        $sql = "SELECT id_usuario, nm_senha FROM usuario WHERE nm_email = '$email'";
+        $sql = "SELECT id_usuario, nm_senha FROM usuario WHERE nm_email = '$email';";
 
-		$result = mysqli_query($con, $sql);
+		// $result = mysqli_query($con, $sql);
 		
-		$connection->CloseCon($con);
+        // $connection->CloseCon($con);
+        
+        if ($result = $con->query($sql) === FALSE){
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
 
+        $connection->CloseCon($con);
 
         return $result;
 

@@ -1,6 +1,7 @@
 <?php
 $email = $_POST['email'] ?? null;
 $senha = $_POST['senha'] ?? null;
+$nomeArtilharia = $_GET['nomeArtilharia'] ?? null;
 $e = null;
 
 session_start();
@@ -106,7 +107,7 @@ if (!is_null($email)) {
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
             <hr width="">
-            Copyright &copy Equipe Null - 2019
+            Copyright &copy Equipe Null - <?php echo date("Y"); ?>
         </footer>
     </center>
 </body>

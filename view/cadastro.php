@@ -5,6 +5,7 @@ if (isset($_SESSION['id'], $_SESSION['nome'], $_SESSION['email'])) {
 }
 
 $e = null;
+$nomeArtilharia = $_GET['$nomeArtilharia'] ?? null;
 $nmUsuario = $_POST['nmUsuario'] ?? null;
 $nmLogin = $_POST['nmLogin'] ?? null;
 $nmSenha = $_POST['nmSenha'] ?? null;
@@ -16,14 +17,11 @@ $options = ['cost' => 12,];
 if (!is_null($nmUsuario)) {
     require __DIR__ . '../../controller/Usuario.php';
     
-    
     try{
-        if (preg_match('/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/', $nmEmail)) {
             if(strlen($nmSenha) >= 6 && strlen($nmSenha) >= 6){
                 if($nmSenha == $nmSenha2){
                 if(preg_match('/^[a-zA-Z\s]+$/', $nmUsuario)){
-                        $nmSenha = password_hash($nmSenha, PASSWORD_BCRYPT, $options);
-                        $nmSenha2 = password_hash($nmSenha, PASSWORD_BCRYPT, $options);
+                        $nmSenha = hash('md5', $nmSenha);
                         $query = new Usuario('usuarios');
                         $query->cadastrarUsuario($nmUsuario, $nmLogin, $nmSenha, $nmEmail);
                     }else{
@@ -33,12 +31,9 @@ if (!is_null($nmUsuario)) {
                     throw new exception('Senhas diferentes.');
                 }
                 }else{
-                    throw new exception('Senha muito curta.');
+                    throw new exception('A senha precisa ter no mínimo 6 caracteres.');
                 }
     header('LOCATION: login.php');
-    }else{
-        throw new exception('Email invalido.');
-    }
     }catch(Exception $e){}
 }
 ?>
