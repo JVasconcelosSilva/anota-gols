@@ -15,9 +15,9 @@ if (!is_null($email)) {
 
     $query = new Usuario('usuarios');
     $select = $query->loginUsuario($email);
-    $row = mysqli_fetch_assoc($select);
-    if (password_verify($senha, $row["nm_senha"])) {
-        $id = $row["id_usuario"];
+
+    if ((hash('md5', $senha) == $select["nm_senha"])) {
+        $id = $select["id_usuario"];
         $dados_usuario = $query->selectUsuario($id);
         $dado = mysqli_fetch_assoc($dados_usuario);
 
@@ -30,7 +30,7 @@ if (!is_null($email)) {
         throw new exception('Falha ao efetuar login');
     } 
     }catch (Exception $e) {
-        //echo 'Falha ao efetuar login!';
+        echo 'Falha ao efetuar login!';
     }
 }
 ?>
