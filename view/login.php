@@ -99,7 +99,8 @@ if (!is_null($email)) {
             <button class="btn btn-primary" name="login">Entrar</button>
         </form>
         </div>
-        <br><p>Não possuí conta? <a href="cadastro.php">Cadastre-se</a></p>
+        <br><p>Não possuí conta? <a href="cadastro.php">Cadastre-se</a>
+        <br><a href="esqueceu-senha.php">Esqueci minha senha</a></p>
     </center>
     <center>
         <footer style="position: absolute; bottom: 0; width: 100%">

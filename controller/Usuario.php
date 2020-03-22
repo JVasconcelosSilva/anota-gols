@@ -1,8 +1,6 @@
 <?php
 
-
 include_once '../controller/Artilharia.php';
-include 'ChromePhp.php';
 
 class Usuario extends connection {
 
