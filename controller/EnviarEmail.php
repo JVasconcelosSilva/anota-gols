@@ -120,7 +120,7 @@ class EnviarEmail extends connection {
          $assunto = "Alteração de Senha - Anota Gols";
      
          $headers = array(
-             'Authorization: Bearer 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',
+            'Authorization: Bearer '. getenv('API_KEY_EMAIL') .'',
              'Content-Type: application/json'
          );
      
