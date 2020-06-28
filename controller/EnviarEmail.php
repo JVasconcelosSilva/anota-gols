@@ -49,7 +49,6 @@ class EnviarEmail extends connection {
         Não esqueça de redefinir sua senha.</p> <br>";
 
         $assunto = "Recuperação de Senha - Anota Gols";
-        ChromePhp::log(getenv('API_KEY_EMAIL'));
     
         $headers = array(
             'Authorization: Bearer '. getenv('API_KEY_EMAIL') .'',

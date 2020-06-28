@@ -26,7 +26,7 @@ if ($op == "Salvar") {
     echo "entro";
     $select = $query->loginUsuario($_SESSION['email']);
     $row = mysqli_fetch_assoc($select);
-    if (password_verify($senha, $row["nm_senha"])) {
+    if ((hash('md5', $senha) == $select["nm_senha"])) {
 
         if ($_POST['novaSenha'] === $_POST['cNovaSenha']) {
             $options = [

@@ -1,6 +1,6 @@
 <?php
 
-include_once '../controller/Artilharia.php';
+include_once 'Artilharia.php';
 
 class Usuario extends connection {
 
@@ -12,17 +12,16 @@ class Usuario extends connection {
      * cadastrarUsuario
      *
      * @param  mixed $nmUsuario
-     * @param  mixed $nmLogin
      * @param  mixed $nmSenha
      * @param  mixed $nmEmail
      * @return void
      */
-    public function cadastrarUsuario($nmUsuario, $nmLogin, $nmSenha, $nmEmail) {
+    public function cadastrarUsuario($nmUsuario, $nmSenha, $nmEmail) {
 
         $connection = new connection();
         $con = $connection->OpenCon();
 
-        $query = "INSERT INTO usuario (nm_login, nm_senha, nm_email, nm_usuario) VALUES('$nmLogin','$nmSenha','$nmEmail','$nmUsuario');";
+        $query = "INSERT INTO usuario (nm_login, nm_senha, nm_email, nm_usuario) VALUES('','$nmSenha','$nmEmail','$nmUsuario');";
         
         if ($con->query($query) === FALSE){
             echo "Error: " . $sql . "<br>" . $conn->error;
@@ -51,7 +50,7 @@ class Usuario extends connection {
                 $retorno = $row;
             }
         } else {
-            echo "Sem resultados";
+            $retorno = null;
         }
         
         $connection->CloseCon($con);
@@ -90,13 +89,20 @@ class Usuario extends connection {
 		$connection = new connection();
 		$con = $connection->OpenCon();
 
-        $sql = "UPDATE usuario SET nm_senha = '$senha' WHERE id_usuario = $id";
+        $query = "UPDATE usuario SET nm_senha = '$senha' WHERE id_usuario = $id";
 
-        mysqli_query($con, $sql);
+        //mysqli_query($con, $sql);
+        $con->query($query);
 
         $connection->CloseCon($con);
     }
-
+    
+    /**
+     * excluirUsuario
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function excluirUsuario($id){
 
 		$connection = new connection();
@@ -108,7 +114,6 @@ class Usuario extends connection {
         foreach($artilharias as $artilharia){
             $query->excluirArtilharia($id, $artilharia['id_artilharia']);
         }
-        
         // Deleta a conta
         $sql = "DELETE FROM usuario WHERE id_usuario = $id";
         mysqli_query($con, $sql);
