@@ -25,45 +25,60 @@
 
 <!----------------------------------------Navbar------------------------------------------>
 
-    <header class="header">  
+<header class="header">  
         <nav class="navbar navbar-default fixed-top">
             <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Logo vem aqui</a>
-            </nav>
-                <!--
-                <div class="navbar-header" >
-                    <a href="#" class="navbar-brand" id="logo"> <img src="Imagens/Anota (1).png" alt=""></a>
-                </div>
-                -->
-                <ul class="nav navbar-icones">
-                <div class="btn-group">
-                    <button type="button" class="btndrop btn-primary1">Nome</button>
-                    <button type="button" class="btnseta btn-primary1 dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="../Escolher/escolher.php">Mudar Esporte</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../Escolher/escolher.php">Meu Perfil</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../Index/index.php">Sair</a>
+                <a class="navbar-brand js-scroll-trigger" href="../index.php">Anota Gols</a>
+                <?php
+                if (isset($_SESSION['id'], $_SESSION['nome'], $_SESSION['email'])) {
+                    ?>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button type="button" onclick="window.location.href = '/view/minhas-informacoes.php'" id="user" class="btn btn-outline-secondary"><?php echo $_SESSION['nome']; ?></button>
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <form method="get" action="publicas.php?nomeArtilharia=<?= $nomeArtilharia ?>" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <div class="input-group" id="menuPesquisa">
+                                        <input type="text" name="nomeArtilharia" class="form-control bg-light border-0 small" placeholder="Procurar artilharia..." aria-label="Search" aria-describedby="basic-addon2">
+                                    </div>
+                                    <div role="separator" class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="publicas.php">Artilharias Públicas</a>
+                                    <div role="separator" class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="minhas-informacoes.php">Minhas Informações</a>
+                                    <a class="dropdown-item" href="pagina-principal.php">Minhas Artilharias</a>
+                                    <div role="separator" class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="logout.php">Sair</a>
+                                </form>
+                            </div>
+                        </div>
                     </div>
+                <?php } else { ?>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button type="button" onclick="window.location.href = '/view/login.php'" id="user" class="btn btn-outline-secondary">Entrar</button>
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <form method="get" action="/view/publicas.php?nomeArtilharia=<?= $nomeArtilharia ?>" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <div class="input-group" id="menuPesquisa">
+                                        <input type="text" name="nomeArtilharia" class="form-control bg-light border-0 small" placeholder="Procurar artilharia..." aria-label="Search" aria-describedby="basic-addon2">
+                                    </div>
+                                    <div role="separator" class="dropdown-divider"></div>
+                                    <a class="dropdown-item active" href="publicas.php">Artilharias Públicas</a>
+                                    <div role="separator" class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="cadastro.php">Cadastre-se</a>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-
-<!--
-                    <div class="header-buttons text-center">
-                        <a id="teste" href="../Escolher/escolher.php" class="btn btn-half">Mudar Esporte</a>
-                    </div>
-                    <div class="header-buttons text-center">
-                        <a id="teste" href="../Escolher/escolher.php" class="btn btn-half">Meu Perfil</a>
-                    </div>
-                    <div class="header-buttons text-center">
-                        <a href="../Index/index.php" class="btn btn-half">Sair</a>
-                    </div>
-                </ul>
+                <?php } ?>
             </div>
-            -->
+
         </nav>
-    </header>
+            </div>
+        </nav>
+                </header>
 </body>

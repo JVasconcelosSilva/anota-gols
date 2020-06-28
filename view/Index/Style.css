@@ -13,10 +13,66 @@ body{ /*tratamento da rolagem do site*/
     background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)), url(Imagens/field_football.png);
     height: 100vh;
     background-position: center;
-    background-size: cover;
+	background-size: cover;
+}
+
+/****************
+* NAVBAR do REI *
+****************/
+
+.btn.btn-outline-secondary{
+    background-color: #18BC9C;
+    border-color: #18BC9C;
+    color: #ffffff;
+}
+
+#user{
+    border-right-color: #ffffff;
+}
+
+.input-group.mb-3{
+    width: 110px;
+}
+
+.btn.btn-outline-secondary.dropdown-toggle.dropdown-toggle-split{
+    border-top-right-radius: 25%;
+    border-bottom-right-radius: 25%;
+}
+
+#menuPesquisa{
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.d-none.d-sm-inline-block.form-inline.mr-auto.ml-md-3.my-2.my-md-0.mw-100.navbar-search{
+    margin-left: 0px!important;
 }
 
 
+* {
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar h3{
+    color: #ffffff;
+}
+
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+.mb-3, .my-3{
+	margin-left: 1000px;
+	margin-top: -30px;
+}
 
 /***********************
 *                      *
@@ -31,12 +87,21 @@ body{ /*tratamento da rolagem do site*/
     margin-bottom: 25px;
 }
 
+
 .btn{ /*tratamento do botão*/
+    padding: 5px 10px;
+    border: 2px solid #fff;
+    margin-right: 0px; 
+    margin-left: 0px;
+}
+
+.btn1{ /*tratamento do botão*/
     padding: 5px 10px;
     border: 2px solid #fff;
     margin-right: 10px; 
     margin-left: 10px;
 }
+
 
 .header-buttons a{ /*letras dentro do botão*/
     color: white;
@@ -44,13 +109,13 @@ body{ /*tratamento da rolagem do site*/
 	font-weight: bold;
 }
 
-.header-buttons a.btn-full:hover{ /*tratamento de dentro do botão full*/
+.header-buttons a.btn1-full:hover{ /*tratamento de dentro do botão full*/
     background-color: #fff;
 	color: black;
 	font-weight: bold;
 }
 
-.header-buttons a.btn-half:hover{ /*tratamento de dentro do botão half*/
+.header-buttons a.btn1-half:hover{ /*tratamento de dentro do botão half*/
     background-color: #fff;
 	color: black;
 	font-weight: bold;
@@ -60,7 +125,7 @@ body{ /*tratamento da rolagem do site*/
 *       NAVBAR        *
 ***********************/
 .navbar{
-    background-color: black;
+	background-color: black;
 }
 
 a {
@@ -71,7 +136,7 @@ a {
 
 .nav-item{
     text-align: center; /*Posição*/
-    padding: 2px;
+	padding: 2px;
 }
 .nav-link{
     font-size: 20px; /*Tamanho dos itens*/
@@ -368,23 +433,15 @@ body {
 }
 
 
-
 /*TODO*/
 /* 
     Created on : 19/09/2019, 10:22:33
     Author     : JVasconcelosSilva - anota-gols
 */
 
-body{
-    height: 100%;
-}
-
-/*Responsive*/
-@media screen and(min-width: 768px){
-    .col-md-4.mb-3.mb-md-0{
-        margin-left: 200px;
-    }
-}
+/****************
+* NAVBAR do REI *
+****************/
 
 .btn.btn-outline-secondary{
     background-color: #18BC9C;
@@ -414,16 +471,12 @@ body{
     margin-left: 0px!important;
 }
 
-/* 
-    Created on : 19/09/2019, 09:00:41
-    Author     : JVasconcelosSilva - anota-gols
-*/
+
 * {
     box-sizing: border-box;
 }
 
 .navbar {
-    overflow: hidden;
     background-color: #333;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -432,11 +485,14 @@ body{
     color: #ffffff;
 }
 
-/*Resposive*/
+
 @media screen and (max-width: 600px) {
     .column {
         width: 100%;
-        height: auto;
     }
 }
 
+.mb-3, .my-3{
+	margin-left: 1000px;
+	margin-top: -30px;
+}

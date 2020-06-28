@@ -1,17 +1,113 @@
+
+/****************
+* NAVBAR do REI *
+****************/
+
+.btn.btn-outline-secondary{
+    background-color: #18BC9C;
+    border-color: #18BC9C;
+    color: #ffffff;
+}
+
+#user{
+    border-right-color: #ffffff;
+}
+
+.input-group.mb-3{
+    width: 110px;
+}
+
+.btn.btn-outline-secondary.dropdown-toggle.dropdown-toggle-split{
+    border-top-right-radius: 25%;
+    border-bottom-right-radius: 25%;
+}
+
+#menuPesquisa{
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.d-none.d-sm-inline-block.form-inline.mr-auto.ml-md-3.my-2.my-md-0.mw-100.navbar-search{
+    margin-left: 0px!important;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar h3{
+    color: #ffffff;
+}
+
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+.mb-3, .my-3{
+	margin-left: 1000px;
+	margin-top: -30px;
+}
+
 /***********************
-*       ROLAGEM        *
+*                      *
 ***********************/
-body{ /*tratamento da rolagem do site*/
-    overflow-y: scroll;
-	overflow-x: hidden;
+#imghome{
+    padding-top: 15%;
+    padding-bottom: 2%;
+}
+
+.hero-text{ /*Frase de efeito*/
+    color: white;
+    margin-bottom: 25px;
+}
+
+
+.btn{ /*tratamento do botão*/
+    padding: 5px 10px;
+    border: 2px solid #fff;
+    margin-right: 0px; 
+    margin-left: 0px;
+}
+
+.btn1{ /*tratamento do botão*/
+    padding: 5px 10px;
+    border: 2px solid #fff;
+    margin-right: 10px; 
+    margin-left: 10px;
+}
+
+
+.header-buttons a{ /*letras dentro do botão*/
+    color: white;
+	transition: all 0.5s ease-in;
+	font-weight: bold;
+}
+
+.header-buttons a.btn1-full:hover{ /*tratamento de dentro do botão full*/
+    background-color: #fff;
+	color: black;
+	font-weight: bold;
+}
+
+.header-buttons a.btn1-half:hover{ /*tratamento de dentro do botão half*/
+    background-color: #fff;
+	color: black;
+	font-weight: bold;
 }
 
 /***********************
 *       NAVBAR        *
 ***********************/
-.navbar{
-	background-color: black;
-}
+
 
 a {
     color:white;
@@ -19,15 +115,9 @@ a {
     background-color: transparent;
 }
 
-a:hover {
-    color:#000000;
-    text-decoration: none;
-    background-color: transparent;
-}
-
 .nav-item{
     text-align: center; /*Posição*/
-    padding: 2px;
+	padding: 2px;
 }
 .nav-link{
     font-size: 20px; /*Tamanho dos itens*/
@@ -36,90 +126,4 @@ a:hover {
 
 .nav-link:hover{
     color: #ffdd15;
-}
-
-a#teste{
-	margin-right: 0px;
-}
-
-  
-/**************
-* Botao Navbar *
-**************/
-
-.btn-primary1{
-	width: 150px;
-	height: 35px;
-	cursor: pointer;
-	background: #fff;
-	outline: none;
-	transition: 1s ease-in-out;
-	margin-top: 1px;
-	font-weight: bold;
-}
-
-.btn-primary1:hover {
-	transition: 1s ease-in-out;
-	background:  #FF4000;
-	font-weight: bold;
-  }
-  
-    
-  .btn-primary1:hover svg {
-	stroke-dashoffset: -480;
-  }
-  
-  .btn-primary1 span {
-	color: white;
-	font-size: 18px;
-	font-weight: 100;
-	font-weight: bold;
-  }
-
-  .btn-primary1:hover {
-	color: #000000;
-	font-weight: 100;
-	font-weight: bold;
-  }
-
-.a {
-    color:white;
-    text-decoration: none;
-    background-color: transparent;
-}
-
-.btnseta{
-	padding: 5px 10px;
-	border-radius: 0px;
-	margin-right: 0px;
-	width: 40px;
-	height: 37px;
-	margin-top: 0px;
-}
-
-.btndrop{ /*tratamento do botão*/
-    padding: 5px 10px;
-    border: 2px solid #fff;
-	font-weight: bold;
-}
-.dropdown-item{
-	margin-top: 0px;
-	display: block;
-    width: 100%;
-    padding: .25rem 1.5rem;
-    clear: both;
-    font-weight: 400;
-    color: #212529;
-    text-align: inherit;
-    white-space: nowrap;
-    background-color: transparent;
-	border: 0;
-}
-
-.form-check-label{
-	margin-left: 30px;
-}
-
-.form-check-input{
-	margin-left: 10px;
 }
