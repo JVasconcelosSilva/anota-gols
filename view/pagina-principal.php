@@ -5,14 +5,14 @@
     require __DIR__ . '../../controller/session.php';
     require __DIR__ . '../../controller/Artilharia.php';
 
-    $numArtilharias = 0;
+    $numRankings = 0;
     $query = new Artilharia('artilharia');
     $registros = $query->getArtilhariasUsuario($_SESSION['id']);
     $op = $_POST['op'] ?? null;
 
     if ($op == "Excluir")
     {
-        $query->excluirArtilharia($_SESSION['id'], $_POST['idArtilharia']);
+        $query->excluirArtilharia($_SESSION['id'], $_POST['idRankings']);
 
         header('LOCATION: pagina-principal.php');
     }
@@ -21,13 +21,13 @@
     if ($op == "Criar")
     {
         $dtCriacao = date_default_timezone_get();
-        $query->cadastrarArtilharia($_POST['nmArtilharia'], $dtCriacao, $_POST['icPrivacidade'], $_SESSION['id']);
+        $query->cadastrarArtilharia($_POST['nmRankings'], $dtCriacao, $_POST['icPrivacidade'], $_POST['ieModalidade'], $_SESSION['id']);
         header('LOCATION: pagina-principal.php');
     }
 
     if ($op == "Alterar")
     {
-        $query->updateArtilharia($_POST['idArtilharia'], $_POST['nmArtilharia'], $_POST['icPrivacidade']);
+        $query->updateArtilharia($_POST['idRankings'], $_POST['nmRankings'], $_POST['icPrivacidade']);
         header('LOCATION: pagina-principal.php');
     }
     ?>
@@ -92,26 +92,26 @@
                 }
                 else
                 {
-                    foreach ($registros as $artilharias)
+                    foreach ($registros as $rankings)
                     {
-                        $numArtilharias++;
+                        $numRankings++;
                         ?>
 
                         <div class="col-md-4 mb-3 mb-md-0" style="margin-top: 50px;">
                             <div class="card py-4 h-100">
                                 <div class="card-body text-center">
                                     <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-                                    <h4 class="text-uppercase m-0" style="color: black "><?= $artilharias['nm_artilharia'] ?></h4>
+                                    <h4 class="text-uppercase m-0" style="color: black "><?= $rankings['nm_ranking'] ?></h4>
                                     <hr class="my-4">
                                     <center>
                                         <div class="circle">
-                                            <a href="artilharia.php?idArtilharia=<?= $artilharias['id_artilharia']?>&nmArtilharia=<?=strtoupper($artilharias['nm_artilharia'])?>"><button><img src="../img/artilharia<?= $numArtilharias ?>.jpeg"></button></a>
+                                            <a href="artilharia.php?idRankings=<?= $rankings['id_ranking']?>&nmRankings=<?=strtoupper($rankings['nm_ranking'])?>"><button><img src="../img/artilharia<?= $numRankings ?>.jpeg"></button></a>
                                         </div>
                                     </center>
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#ExcluirArtilharia-<?= $artilharias['id_artilharia'] ?>" style="margin: 10px">Excluir</button>
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#AlterarArtilharia-<?= $artilharias['id_artilharia'] ?>">Alterar</button>
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#ExcluirArtilharia-<?= $rankings['id_ranking'] ?>" style="margin: 10px">Excluir</button>
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#AlterarArtilharia-<?= $rankings['id_ranking'] ?>">Alterar</button>
                                     <!-- Modal para alteração de artilharias -->
-                                    <div class="modal fade" id="AlterarArtilharia-<?= $artilharias['id_artilharia'] ?>" tabindex="-1" role="dialog"
+                                    <div class="modal fade" id="AlterarArtilharia-<?= $rankings['id_ranking'] ?>" tabindex="-1" role="dialog"
                                          aria-labelledby="TituloModalLongoExemplo" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -125,22 +125,22 @@
                                                     <form method="post">
                                                         <div>
                                                         <p>Mudar nome da artilharia</p>
-                                                        <input type="text" class="form-control" name="nmArtilharia" id="Nome" value="<?= $artilharias['nm_artilharia'] ?>">
+                                                        <input type="text" class="form-control" name="nmRankings" id="Nome" value="<?= $rankings['nm_ranking'] ?>">
                                                         </div>
                                                         <p style="margin-left: -370px; margin-top: 20px;">Privacidade:</p>
                                                         <div class="custom-control custom-radio custom-control-inline" style="position: absolute; margin-top: -40px; margin-left: -120px">
-                                                            <input type="radio" id="customRadioInline1" name="icPrivacidade" class="custom-control-input" value="1" checked>
+                                                            <input type="radio" id="customRadioInline1" name="icPrivacidade" class="custom-control-input" value="0" checked>
                                                             <label class="custom-control-label" for="customRadioInline1">Público</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline" style="position: absolute; margin-top: -40px; margin-left: -30px">
-                                                            <input type="radio" id="customRadioInline2" name="icPrivacidade" class="custom-control-input" value="2">
+                                                            <input type="radio" id="customRadioInline2" name="icPrivacidade" class="custom-control-input" value="1">
                                                             <label class="custom-control-label" for="customRadioInline2">Privado</label>
                                                         </div>
 
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                                    <input type="hidden" name="idArtilharia" value="<?= $artilharias['id_artilharia'] ?>">
+                                                    <input type="hidden" name="idRankings" value="<?= $rankings['id_ranking'] ?>">
                                                     <input type="submit" class="btn btn-primary" value="Alterar" name="op">
                                                     </form>
                                                 </div>
@@ -148,7 +148,7 @@
                                         </div>
                                     </div>
                                     <!-- Modal para exclusão de artilharias -->
-                                    <div class="modal fade" id="ExcluirArtilharia-<?= $artilharias['id_artilharia'] ?>" tabindex="-1" role="dialog"
+                                    <div class="modal fade" id="ExcluirArtilharia-<?= $rankings['id_ranking'] ?>" tabindex="-1" role="dialog"
                                          aria-labelledby="TituloModalLongoExemplo" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -159,12 +159,12 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h7>Certeza que deseja excluir a artilharia <?=$artilharias['nm_artilharia']?>?</h7>
+                                                    <h7>Certeza que deseja excluir a artilharia <?=$rankings['nm_ranking']?>?</h7>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                                     <form method="post">
-                                                        <input type="hidden" name="idArtilharia" value="<?= $artilharias['id_artilharia'] ?>">
+                                                        <input type="hidden" name="idRankings" value="<?= $rankings['id_ranking'] ?>">
                                                         <input type="submit" class="btn btn-primary" name="op" value="Excluir">
                                                     </form>
                                                 </div>
@@ -183,7 +183,7 @@
                 ?>
 
                 <?php
-                if ($numArtilharias < 3)
+                if ($numRankings  < 3)
                 {
                     ?>
                     <div class="col-md-4 mb-3 mb-md-0" style="margin-top: 50px;">
@@ -211,16 +211,23 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <form method="post">
-                                                        <input type="text" class="form-control" name="nmArtilharia" id="Nome" placeholder="Nome da Artilharia">
+                                                        <input type="text" class="form-control" name="nmRankings" id="Nome" placeholder="Nome da Artilharia">
                                                         <p style="margin-left: -370px; margin-top: 20px;">Privacidade:</p>
                                                         <div class="custom-control custom-radio custom-control-inline" style="position: absolute; margin-top: -40px; margin-left: -120px">
-                                                            <input type="radio" id="customRadioInline3" name="icPrivacidade" class="custom-control-input" value="1" checked>
+                                                            <input type="radio" id="customRadioInline3" name="icPrivacidade" class="custom-control-input" value="0" checked>
                                                             <label class="custom-control-label" for="customRadioInline3">Público</label>
                                                         </div>
                                                         <div class="custom-control custom-radio custom-control-inline" style="position: absolute; margin-top: -40px; margin-left: -30px">
-                                                                <input type="radio" id="customRadioInline4" name="icPrivacidade" class="custom-control-input" value="2">
+                                                                <input type="radio" id="customRadioInline4" name="icPrivacidade" class="custom-control-input" value="1">
                                                                 <label class="custom-control-label" for="customRadioInline4">Privado</label>
                                                         </div>
+                                                        <div class="col-auto my-1">
+                                                        <p style="margin-left: -370px; margin-top: 20px;">Modalidade</p>
+                                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="ieModalidade">
+                                                    <option value="0" selected>1 - Basquete</option>
+                                                    <option value="1">2 - Futebol</option>
+                                                </select>
+                                                </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

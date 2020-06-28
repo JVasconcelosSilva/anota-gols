@@ -30,7 +30,11 @@ class Jogador extends connection {
 		$connection = new connection();
 		$con = $connection->OpenCon();
 
-        $sql = "SELECT id_jogador, qt_gol, nm_jogador FROM jogador WHERE id_artilharia = '$idArtilharia' ORDER BY qt_gol DESC";
+        //$sql = "SELECT id_jogador, qt_gol, nm_jogador FROM jogador WHERE id_artilharia = '$idArtilharia' ORDER BY qt_gol DESC";
+        
+        $sql = "SELECT id_jogador, qt_ponto, nm_jogador FROM Jogador WHERE fk_Ranking_id_ranking = $idArtilharia ORDER BY qt_ponto DESC;";
+        
+        
 
         $result = mysqli_query($this->OpenCon(), $sql);
 

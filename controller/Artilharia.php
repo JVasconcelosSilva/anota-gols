@@ -8,20 +8,44 @@ class Artilharia extends connection {
         $this->nome = $nome;
     }
 
-    public function cadastrarArtilharia($nmArtilharia, $dtCriacao, $icPrivacidade, $idUsuario) {
+    public function cadastrarArtilharia($nmArtilharia, $dtCriacao, $icPrivacidade, $ieModalidade, $idUsuario) {
         
 		$connection = new connection();
 		$con = $connection->OpenCon();
 
-        $sql = "INSERT INTO artilharia (nm_artilharia, dt_criacao, ic_privacidade, id_usuario)
-        VALUES ('$nmArtilharia', '$dtCriacao', '$icPrivacidade', '$idUsuario')";
+        // $sql = "INSERT INTO artilharia (nm_artilharia, dt_criacao, ic_privacidade, id_usuario)
+        // VALUES ('$nmArtilharia', '$dtCriacao', '$icPrivacidade', '$idUsuario')";
+
+        $sql = "INSERT INTO Ranking (nm_ranking, dt_criacao, ic_privacidade, ie_modalidade, fk_Usuario_id_usuario) 
+        VALUES ('$nmArtilharia', curdate(), $icPrivacidade, $ieModalidade, $idUsuario)";
         
-        mysqli_query($con, $sql);
-		if(mysqli_errno($con)){
-			throw new exception(mysqli_errno($con));
-		}
+        // mysqli_query($con, $sql);
+		// if(mysqli_errno($con)){
+		// 	throw new exception(mysqli_errno($con));
+        // }
+        
+        //throw Exception("INSERT INTO Ranking (nm_ranking, dt_criacao, ic_privacidade, ie_modalidade, fk_Usuario_id_usuario) VALUES ('$nmArtilharia', curdate(), $icPrivacidade, $ieModalidade, $idUsuario)");
+
+        if ($con->query($sql) === FALSE){
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
 
         $connection->CloseCon($con);
+
+        
+
+
+        // $connection = new connection();
+        // $con = $connection->OpenCon();
+
+        // $query = "INSERT INTO usuario (nm_login, nm_senha, nm_email, nm_usuario) VALUES('','$nmSenha','$nmEmail','$nmUsuario');";
+        
+        // if ($con->query($query) === FALSE){
+        //     echo "Error: " . $sql . "<br>" . $conn->error;
+        // }
+
+        // $connection->CloseCon($con);
+
     }
 
     public function getArtilhariasUsuario($idUsuario){
@@ -29,8 +53,9 @@ class Artilharia extends connection {
 		$connection = new connection();
 		$con = $connection->OpenCon();
 
-        $sql = "SELECT id_artilharia, nm_artilharia, dt_criacao, ic_privacidade FROM artilharia WHERE id_usuario = '$idUsuario'";
-
+        //$sql = "SELECT id_artilharia, nm_artilharia, dt_criacao, ic_privacidade FROM Artilharia WHERE id_usuario = '$idUsuario'";
+        $sql = "SELECT id_ranking, nm_ranking, dt_criacao, ic_privacidade, ie_modalidade FROM Ranking WHERE fk_Usuario_id_usuario = '$idUsuario'";
+        
         $result = mysqli_query($con, $sql);
 
         $connection->CloseCon($con);
@@ -106,7 +131,9 @@ class Artilharia extends connection {
 		$connection = new connection();
 		$con = $connection->OpenCon();
 
-        $sql = "SELECT id_usuario FROM artilharia WHERE id_artilharia = '$idArtilharia'";
+        //$sql = "SELECT id_usuario FROM artilharia WHERE id_artilharia = '$idArtilharia'";
+
+        $sql = "SELECT fk_Usuario_id_usuario FROM Ranking WHERE id_ranking = $idArtilharia";
 
         $result = mysqli_query($con, $sql);
 
