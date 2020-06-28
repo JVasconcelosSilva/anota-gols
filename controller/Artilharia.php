@@ -117,7 +117,9 @@ class Artilharia extends connection {
 		$connection = new connection();
 		$con = $connection->OpenCon();
 
-        $sql = "SELECT a.id_artilharia, a.nm_artilharia, a.dt_criacao, a.ic_privacidade, u.nm_usuario FROM artilharia a, usuario u WHERE a.id_usuario = u.id_usuario AND a.ic_privacidade = '1' AND a.nm_artilharia LIKE '$name%'";
+        //$sql = "SELECT a.id_artilharia, a.nm_artilharia, a.dt_criacao, a.ic_privacidade, u.nm_usuario FROM artilharia a, usuario u WHERE a.id_usuario = u.id_usuario AND a.ic_privacidade = '1' AND a.nm_artilharia LIKE '$name%'";
+        $sql = "SELECT r.id_ranking, r.nm_ranking, r.dt_criacao, r.ic_privacidade, r.ie_modalidade, u.nm_usuario FROM Ranking r, Usuario u WHERE r.fk_Usuario_id_usuario = u.id_usuario AND r.ic_privacidade = 0 AND r.nm_ranking LIKE '$name%'";
+        
 
         $result = mysqli_query($con, $sql);
 
