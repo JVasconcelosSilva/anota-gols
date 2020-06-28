@@ -90,3 +90,20 @@ h1 {
     transition: 0.2s;
     color: #ff4d4d;
 }
+
+
+.btn{ /*tratamento do botão*/
+    padding: 5px 10px;
+    border: 2px solid #fff;
+    width: 255px;
+    font-size: bolder;
+}
+
+.header-buttons a{ /*letras dentro do botão*/
+    color: #000000;
+	transition: all 0.5s ease-in;
+    font-weight: bold;
+    border: 2px solid #fff;
+    border-radius: 100px;
+    background-color: #fff;
+}

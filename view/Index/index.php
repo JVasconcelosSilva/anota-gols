@@ -98,10 +98,7 @@
                     <h3> Controle seu jogo ou alguém controlará por voce! </h4>
                 </div>
 
-                <div class="header-buttons text-center">
-                    <a href="" class="btn1 btn1-full">botão 1</a>
-                    <a href="" class="btn btn1-half">botão 2</a>
-                </div>
+                
             </div>
         </div>
     </header>

@@ -31,7 +31,8 @@ body{ /*tratamento da rolagem do site*/
 }
 
 .input-group.mb-3{
-    width: 110px;
+	width: 110px;
+	margin-top: -37px;
 }
 
 .btn.btn-outline-secondary.dropdown-toggle.dropdown-toggle-split{

@@ -325,8 +325,8 @@ body {
 .box {
     margin: 10px;
     margin-top: 40px;
-	width: 300px;
-	height: 490px;
+	width: 1000px;
+	height: 100px;
 	text-align: center;
 	border-radius: 3px;
 	-webkit-transition: 200ms ease-in-out;
@@ -342,8 +342,38 @@ body {
 }
 .box h1 {
 	color: #fff;
-	padding: 30px;
-	margin-top: 100px;
+	padding: 15px;
+	margin-top: 20px;
+	width: 290px;
+	margin-left: 20px;
+	text-align: center;
+	font-weight: 100;
+	font-size: 25px;
+	background: rgba(0,0,0,0.8);
+	-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.7);
+	        box-shadow: 0 0 30px rgba(0,0,0,0.8);
+}
+
+#dono {
+	color: #fff;
+	padding: 15px;
+	margin-top: -68px;
+	width: 290px;
+	margin-left: 355px;
+	text-align: center;
+	font-weight: 100;
+	font-size: 25px;
+	background: rgba(0,0,0,0.8);
+	-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.7);
+	        box-shadow: 0 0 30px rgba(0,0,0,0.8);
+}
+
+#esporte {
+	color: #fff;
+	padding: 15px;
+	margin-top: -68px;
+	width: 290px;
+	margin-left: 695px;
 	text-align: center;
 	font-weight: 100;
 	font-size: 25px;
@@ -361,7 +391,7 @@ body {
 }
 .poster { /*rede social*/
 	width: 200px;
-	height:50px;
+	height: 50px;
 	margin: 120px auto;
 	position: relative;
     border-radius: 10px;
@@ -376,7 +406,7 @@ body {
 	font-weight: 100;
 }
 .one {
-    background: url(Imagens/tatico.png);
+    background: url(Imagens/bolbas.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
     background-position: center;
@@ -668,4 +698,14 @@ body {
 
 .form-check-input{
 	margin-left: 10px;
+}
+
+/**************
+*    LISTA    *
+**************/
+
+#lista{
+	background-color: #fff;
+	height: 35px;
+	font-size: 22px;
 }
