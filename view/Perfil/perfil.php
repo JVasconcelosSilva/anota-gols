@@ -64,7 +64,7 @@ include_once '../Navbar/navbar.php';
                                         <div class="modal-body">
                                         <form>
                                         <div class="form-group row">
-                                            <label for="colFormLabel" class="col-sm-2 col-form-label">Nome</label>
+                                            <label for="colFormLabel" class="col-sm-2 col-form-label" id="n">Nome</label>
                                             <div class="col-sm-10">
                                             <input type="email" class="form-control" id="colFormLabel" placeholder="">
                                             </div>

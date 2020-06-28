@@ -354,9 +354,13 @@ body {
 	height: 80px;
 }
 
+#n{
+	text-align: left;
+}
+
 .form-row>.col, .form-row>[class*=col-]{
-	text-align: center;
-	margin-left: 3px;
+	text-align: left;
+	margin-left: 0px;
 }
 
 .form-control{
@@ -365,8 +369,8 @@ body {
 }
 
 .custom-control-label::before, .custom-file-label, .custom-select{
-	width: 360px;
-	margin-left: 10px;
+	width: 363px;
+	margin-left: 13px;
 }
 
 .modal-footer>:not(:last-child){
