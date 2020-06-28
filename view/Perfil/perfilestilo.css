@@ -7,17 +7,6 @@ body{ /*tratamento da rolagem do site*/
 }
 
 /***********************
-*       1ª FUNDO       *
-***********************/
-.header{ /*Imagem de fundo*/
-    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)), url(Imagens/field_football.png);
-    height: 5vh;
-    background-position: center;
-	background-size: cover;
-}
-
-
-/***********************
 *       NAVBAR        *
 ***********************/
 .navbar{
@@ -77,10 +66,7 @@ a#teste{
     border-bottom-right-radius: 25%;
 }
 
-#menuPesquisa{
-    margin-left: 16px;
-    margin-right: 16px;
-}
+
 
 .d-none.d-sm-inline-block.form-inline.mr-auto.ml-md-3.my-2.my-md-0.mw-100.navbar-search{
     margin-left: 0px!important;
