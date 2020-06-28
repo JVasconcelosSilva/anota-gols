@@ -174,13 +174,11 @@
                                 </div>  
                             </div>                            
                         </div>
-
-
-
+                        
                         <?php
                     }
                 }
-                ?>
+                        ?>
 
                 <?php
                 if ($numRankings  < 3)

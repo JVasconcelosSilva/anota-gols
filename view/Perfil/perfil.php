@@ -1,3 +1,38 @@
+
+<?php
+
+include_once '../Navbar/navbar.php';
+
+require __DIR__ . '../../../controller/session.php';
+require __DIR__ . '../../../controller/Artilharia.php';
+
+$numRankings = 0;
+$query = new Artilharia('artilharia');
+$registros = $query->getArtilhariasUsuario($_SESSION['id']);
+$op = $_POST['op'] ?? null;
+
+if ($op == "Excluir")
+{
+    $query->excluirArtilharia($_SESSION['id'], $_POST['idRankings']);
+
+    header('LOCATION: perfil.php');
+}
+
+
+if ($op == "Criar")
+{
+    $dtCriacao = date_default_timezone_get();
+    $query->cadastrarArtilharia($_POST['nmRankings'], $dtCriacao, $_POST['icPrivacidade'], $_POST['ieModalidade'], $_SESSION['id']);
+    header('LOCATION: perfil.php');
+}
+
+if ($op == "Alterar")
+{
+    $query->updateArtilharia($_POST['idRankings'], $_POST['nmRankings'], $_POST['icPrivacidade']);
+    header('LOCATION: perfil.php');
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +123,20 @@
                 <br>
                 <br>
             <h1 id="nome">Meus Rankings</h1>
+
+            
             <div class="wrap">
+            <?php
+                if (is_null($registros)) {
+                    ?>
+                    <h2>Você ainda não tem artilharias</h2>
+                    <?php
+                }
+                else
+                {
+                    foreach ($registros as $rankings){
+                        $numRankings++;
+                        ?>
                     <div class="box one">
                         <div class="date">
                         </div>
@@ -97,12 +145,38 @@
                         <div class="text-box">
                         <div class="container">
                             <div class="center">
+                            <a href="../artilharia.php?idRankings=<?= $rankings['id_ranking']?>&nmRankings=<?=strtoupper($rankings['nm_ranking'])?>">
+                            <button type="button" class="btn btn-primary" data-toggle="modal">Entrar</button>
+                        </a>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
+                </div>
+                
+                <?php
+                if ($numRankings  < 3){?>
+                    <div class="box one">
+                        <div class="date">
+                        </div>
+                        <h1>CRIAR RANKING</h1>
+                        <br>
+                        <div class="text-box">
+                        <div class="container">
+                            <div class="center">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ExemploModalCentralizado">
-                                    Entrar
+                                    Criar
                                 </button>
+                            </div>
+                        </div>
+                    </div>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                    
+                <?php }?>
+                <!-- Modal -->
+                <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                         <div class="modal-header">
@@ -158,66 +232,4 @@
                                     </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- TODO -->
-                    <!-- Modal Para Cadastro de Artilharias -->
-                    <div class="modal fade" id="CriarArtilharia" tabindex="-1" role="dialog"
-                                         aria-labelledby="TituloModalLongoExemplo" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="TituloModalLongoExemplo">Cadastro de Artilharia</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form method="post">
-                                                        <input type="text" class="form-control" name="nmRankings" id="Nome" placeholder="Nome da Artilharia">
-                                                        <p style="margin-left: -370px; margin-top: 20px;">Privacidade:</p>
-                                                        <div class="custom-control custom-radio custom-control-inline" style="position: absolute; margin-top: -40px; margin-left: -120px">
-                                                            <input type="radio" id="customRadioInline3" name="icPrivacidade" class="custom-control-input" value="0" checked>
-                                                            <label class="custom-control-label" for="customRadioInline3">Público</label>
-                                                        </div>
-                                                        <div class="custom-control custom-radio custom-control-inline" style="position: absolute; margin-top: -40px; margin-left: -30px">
-                                                                <input type="radio" id="customRadioInline4" name="icPrivacidade" class="custom-control-input" value="1">
-                                                                <label class="custom-control-label" for="customRadioInline4">Privado</label>
-                                                        </div>
-                                                        <div class="col-auto my-1">
-                                                        <p style="margin-left: -370px; margin-top: 20px;">Modalidade</p>
-                                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="ieModalidade">
-                                                    <option value="0" selected>1 - Basquete</option>
-                                                    <option value="1">2 - Futebol</option>
-                                                </select>
-                                                </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                                    <input type="submit" class="btn btn-primary" value="Criar" name="op">
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                    <!--  -->
-
-                <div class="wrap">
-                    <div class="box one">
-                        <div class="date">
-                        </div>
-                        <h1>CRIAR RANKING</h1>
-                        <br>
-                        <div class="text-box">
-                        <div class="container">
-                            <div class="center">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ExemploModalCentralizado">
-                                    Criar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
     </section>
