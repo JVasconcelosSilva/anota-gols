@@ -69,6 +69,7 @@ h1 {
     background: #fff;
     border-radius: 20px;
     transition: 0.2s;
+    font-weight: bolder;
 }
 
 .login input[type="submit"]:houver {
@@ -88,39 +89,23 @@ h1 {
 
 .login a:hover {
     transition: 0.2s;
-    color: #ffdd15;
 }
 
 /***************************************/
-.hero-text{ /*Frase de efeito*/
-    color: white;
-    margin-bottom: 25px;
-}
+
 
 .btn{ /*tratamento do botão*/
     padding: 5px 10px;
     border: 2px solid #fff;
-    margin-right: 15px; 
-    margin-left: 15px;
-    width: 200px;
+    width: 485px;
 }
 
 .header-buttons a{ /*letras dentro do botão*/
-    color: white;
+    color: #000000;
 	transition: all 0.5s ease-in;
     font-weight: bold;
     border: 2px solid #fff;
-    border-radius: 10px;
+    border-radius: 100px;
+    background-color: #fff;
 }
 
-.header-buttons a.btn-full:hover{ /*tratamento de dentro do botão full*/
-    background-color: #fff;
-	color: black;
-	font-weight: bold;
-}
-
-.header-buttons a.btn-half:hover{ /*tratamento de dentro do botão half*/
-    background-color: #fff;
-	color: black;
-	font-weight: bold;
-}

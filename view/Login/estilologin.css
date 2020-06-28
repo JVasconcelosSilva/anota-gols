@@ -8,7 +8,7 @@ body {
 
 .login {
     width: 320px;
-    height: 420px;
+    height: 480px;
     border: 2px solid #000;
     border-radius: 80px 0px 80px 0px;
     color: #fff;
@@ -69,6 +69,7 @@ h1 {
     background: #fff;
     border-radius: 20px;
     transition: 0.2s;
+    font-weight: bolder;
 }
 
 .login input[type="submit"]:houver {

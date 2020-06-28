@@ -34,13 +34,15 @@ include_once '../Navbar/navbar.php';
 <!---------------------------------------------Atletas---+------------------------------------------------->
 
 <section class="testimonials"> 
-            <div class="conatiner">
-
+            <div class="container"> 
+                <br>
+                <br>
+            <h1 id="nome">Minhas Artilharias</h1>
             <div class="wrap">
                     <div class="box one">
                         <div class="date">
                         </div>
-                        <h1>Cestinhas</h1>
+                        <h1>CESTINHAS</h1>
                         <br>
                         <div class="text-box">
                         <div class="container">
@@ -67,6 +69,18 @@ include_once '../Navbar/navbar.php';
                                             <input type="email" class="form-control" id="colFormLabel" placeholder="">
                                             </div>
                                         </div>
+                                        <div class="form-row align-items-center">
+                                            <label for="colFormLabel" class="col-sm-2 col-form-label">Esporte</label>
+                                                <div class="col-auto my-1">
+                                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Privacidade</label>
+                                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                                    <option selected></option>
+                                                    <option value="0">1 - Basquete</option>
+                                                    <option value="1">2 - Futebol</option>
+                                                </select>
+                                                </div>
+                                            </div>
+                                            <br>
                                         <fieldset class="form-group">
                                             <div class="row">
                                             <legend class="col-form-label col-sm-2 pt-0">Privacidade</legend>
@@ -84,19 +98,6 @@ include_once '../Navbar/navbar.php';
                                             </div>
                                             </div>
                                         </fieldset>
-                                        <!--
-                                            <div class="form-row align-items-center">
-                                            <label for="colFormLabel" class="col-sm-2 col-form-label">Privacidade</label>
-                                                <div class="col-auto my-1">
-                                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Privacidade</label>
-                                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                                    <option selected></option>
-                                                    <option value="1">Privada</option>
-                                                    <option value="2">Pública</option>
-                                                </select>
-                                                </div>
-                                            </div>
-                                            -->
                                         </form>
                                         </div>
                                         <div class="modal-footer">
@@ -115,7 +116,7 @@ include_once '../Navbar/navbar.php';
                     <div class="box one">
                         <div class="date">
                         </div>
-                        <h1>CRIAR <br> RANKING</h1>
+                        <h1>CRIAR RANKING</h1>
                         <br>
                         <div class="text-box">
                         <div class="container">
