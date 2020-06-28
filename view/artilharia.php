@@ -5,6 +5,7 @@ require __DIR__ . '../../controller/Artilharia.php';
 
 session_start();
 
+$nomeArtilharia = null;
 $idRankings = $_GET['idRankings'] ?? null;
 $nmRankings = $_GET['nmRankings'] ?? null;
 $nmRankings = strtoupper($nmRankings);
@@ -16,11 +17,12 @@ $artilharia = new Artilharia('artilharia');
 $art = $artilharia->getDonoArtilharia($idRankings);
 $dono = mysqli_fetch_assoc($art);
 
+$op = null;
 $contador = 0;
 $nmJogador = $_POST['nmJogador'] ?? null;
 $op = $_POST['op'] ?? null;
 $qtGol = $_POST['qtGolAtual'] ?? null;
-$controle = 0;
+//$controle = 0;
 
 if ($op == "Criar") {
     $query->cadastrarJogador($nmJogador, $idRankings);
@@ -54,7 +56,7 @@ if ($op == "Buscar") {
     $registros = null;
     $nmJogador = $_POST['nmJogador'] ?? null;
     $registros = $query->getJogadoresNome($idRankings, $nmJogador);
-    $op = null;
+    //$op = null;
 }
 if ($op == "Adicionar Moderador") {
     
@@ -145,55 +147,6 @@ if ($op == "Remover Moderador") {
     
         <h2><?= $nmRankings ?></h2>
         <hr class="star-dark mb-5">
-        <a href="historico-artilharia.php?idRankings=<?= $idRankings?>&nmRankings=<?=$nmRankings?>" ><button class="btn btn-primary">Historico da artilharia</button></a>
-        <?php
-        
-        $registros2 = $query2->getModeradores($idRankings, $dono['id_usuario']);
-        if($_SESSION['id'] == $dono['id_usuario']){
-        ?>
-        <div class="col-6">
-        <p>Moderadores</p>
-        <table class="table table-bordered table-hover">
-            <thead class="thead-dark">
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-        <?php 
-        $contador2 = 0;
-        foreach ($registros2 as $moderador) {
-        $contador2++;
-        ?>
-                <tr>
-                <th><?=$contador2?></th>
-                <td class="col-md-9"><?=$moderador['nm_usuario']?></td>
-                <td>
-                <form method="post">
-                <input type="hidden" name="idModerador" value="<?= $moderador['id_moderador'] ?>">
-                <input type="submit" class="btn btn-primary" value="Remover Moderador" name="op">
-                </form>
-                </td>
-                </tr>
-            <br>
-        <?php } ?>
-        </tbody>
-            </table>
-            <?php if($contador2 < 3){?>
-            <form method="POST">
-        <input type="hidden" name="idRankings" value="<?= $artilharias['rankings'] ?>">
-        <div class="input-group border rounded">
-            <input type="text" class="form-control border-0" placeholder="ID do usuario" aria-label="ID do usuario" aria-describedby="basic-addon2" name="idModerador">
-                <div class="input-group-append">
-                <input class="btn btn-primary" type="submit" name="op" value="Adicionar Moderador">
-                </div>
-            </div>
-        </form>
-        <br>
-        <?php } ?>
-            </div>
 
         <hr/>
         <form method="post">
@@ -208,16 +161,16 @@ if ($op == "Remover Moderador") {
             </div>
         </div>
         </form>
+        <?php if ($op == "Buscar") {?>
         <a href="artilharia.php?idRankings=<?= $idRankings?>&nmRankings=<?=$nmRankings?>" ><button class="btn btn-primary">Mostrar todos os jogadores</button></a>
+        <p>Resultados de: <?= $_POST['nmJogador']?></p>
+        <?php }?>
         <hr/>
+        <?php if (/*$controle == 1  ||*/ $_SESSION['id'] == $dono['fk_Usuario_id_usuario']) { ?>
             <button class="btn btn-primary" id='addJogador' data-toggle="modal" data-target="#CriarJogador">Adicionar Jogador</button>
-        <?php } 
-
-        foreach ($registros2 as $moderador) {
-        
-        if($_SESSION['id'] == $moderador['id_usuario']){$controle=1;} else{$controle=0;}
-        }
-
+        <?php }?>
+        <?php
+        if($registros != null){
         foreach ($registros as $jogador) {
             $contador++;
             ?>
@@ -248,16 +201,16 @@ if ($op == "Remover Moderador") {
                         </div
                         <div class="col-auto mx-auto">
                             <!--Numero de gols do jogador-->
-                            <h5 class="gols"><?= $jogador['qt_gol'] ?> </h5>
+                            <h5 class="gols"><?= $jogador['qt_ponto'] ?> </h5>
                             <?php                            
-                             if ($controle == 1  || $_SESSION['id'] == $dono['id_usuario']) { ?>
+                             if (/*$controle == 1 ||*/ $_SESSION['id'] == $dono['fk_Usuario_id_usuario']) { ?>
                                 <div class="col-md-2">
                                     <div class="row" mx-auto>
                                         <!--Adiciona um gol-->
                                         <form method="POST">
                                             <input type="hidden" name="nmRankings" value="<?= $nmRankings ?>">
                                             <input type="hidden" name="idRankings" value="<?= $idRankings ?>">
-                                            <input type="hidden" name="qtGolAtual" value="<?= $jogador['qt_gol'] ?>">
+                                            <input type="hidden" name="qtGolAtual" value="<?= $jogador['qt_ponto'] ?>">
                                             <input type="hidden" name="idJogador" value="<?= $jogador['id_jogador'] ?>">
                                             <input type="submit" name="op" value="+" class="btn btn-primary"/>
                                         </form>
@@ -265,9 +218,9 @@ if ($op == "Remover Moderador") {
                                         <form method="POST">
                                             <input type="hidden" name="nmRankings" value="<?= $nmRankings ?>">
                                             <input type="hidden" name="idRankings" value="<?= $idRankings ?>">
-                                            <input type="hidden" name="qtGolAtual" value="<?= $jogador['qt_gol'] ?>">
+                                            <input type="hidden" name="qtGolAtual" value="<?= $jogador['qt_ponto'] ?>">
                                             <input type="hidden" name="idJogador" value="<?= $jogador['id_jogador'] ?>">
-                                            <input type="submit" name="op" value="-" class="btn btn-danger" <?php if($jogador['qt_gol'] == 0){?>disabled<?php }?>/>
+                                            <input type="submit" name="op" value="-" class="btn btn-danger" <?php if($jogador['qt_ponto'] == 0){?>disabled<?php }?>/>
                                         </form>
                                     </div>
                                 </div>
@@ -289,14 +242,14 @@ if ($op == "Remover Moderador") {
                                             <form method="POST">
                                                 <div class="modal-body">
                                                     <p><input type="text" class="form-control" name="nmNomeUpdate" id="Nome" value="<?= $jogador['nm_jogador'] ?>"></p>
-                                                    <p><input type="number" class="form-control" name="qtGolUpdate" id="Gol" value="<?= $jogador['qt_gol'] ?>"></p>
+                                                    <p><input type="number" class="form-control" name="qtGolUpdate" id="Gol" value="<?= $jogador['qt_ponto'] ?>"></p>
                                                     <input type="hidden" name="idJogadorUpdate" value="<?= $jogador['id_jogador'] ?>">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <input type="submit" class="btn btn-primary" name="op" value="Alterar">
                                                     <input type="hidden" name="nmRankings" value="<?= $nmRankings ?>">
                                                     <input type="hidden" name="idRankings" value="<?= $idRankings ?>">
-                                                    <input type="hidden" name="qtGolAtual" value="<?= $jogador['qt_gol'] ?>">
+                                                    <input type="hidden" name="qtGolAtual" value="<?= $jogador['qt_ponto'] ?>">
                                                     <input type="submit" class="btn btn-danger" name="op" value="Excluir">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                                 </div>
@@ -309,7 +262,9 @@ if ($op == "Remover Moderador") {
                     </div>
                 </div>
 
-            <?php } ?>
+            <?php } }else{ ?>
+                    <p>Nenhum jogador neste Ranking</p>
+                <?php }?>
 
             <!-- Modal Para Cadastro de Jogaodor -->
             <div class="modal fade" id="CriarJogador" tabindex="-1" role="dialog"

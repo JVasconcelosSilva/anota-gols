@@ -98,7 +98,7 @@ $nomeArtilharia = $_GET['nomeArtilharia'] ?? null;
                                         foreach ($artilharias as $artilharia) {
                                             ?>
                                             <tr>
-                                                <td class="artilharia"><a href="artilharia.php?idArtilharia=<?= $artilharia['id_artilharia'] ?>&nmArtilharia=<?= $artilharia['nm_artilharia'] ?>"><?= $artilharia['nm_artilharia'] ?></a></td>
+                                                <td class="artilharia"><a href="artilharia.php?idRankings=<?= $artilharia['id_ranking'] ?>&nmRankings=<?= $artilharia['nm_ranking'] ?>"><?= $artilharia['nm_ranking'] ?></a></td>
                                                 <td class="dono"><?= $artilharia['nm_usuario'] ?></td>
                                             </tr>
                                         <?php } ?>
@@ -128,7 +128,7 @@ $nomeArtilharia = $_GET['nomeArtilharia'] ?? null;
                                         foreach ($artilharias as $artilharia) {
                                             ?>
                                             <tr>
-                                                <td class="artilharia"><a href="artilharia.php?idArtilharia=<?= $artilharia['id_artilharia'] ?>&nmArtilharia=<?= $artilharia['nm_artilharia'] ?>"><?= $artilharia['nm_artilharia'] ?></a></td>
+                                                <td class="artilharia"><a href="artilharia.php?idArtilharia=<?= $artilharia['id_ranking'] ?>&nmArtilharia=<?= $artilharia['nm_ranking'] ?>"><?= $artilharia['nm_ranking'] ?></a></td>
                                                 <td class="dono"><?= $artilharia['nm_usuario'] ?></td>
                                             </tr>
                                         <?php } ?>
