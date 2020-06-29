@@ -13,7 +13,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="view/Style.css" type="text/css">
+<link rel="stylesheet" href="/view/Index/Style.css" type="text/css">
 <link rel="stylesheet" href="fontes/font-awesome.min.css">
 
 <script src="https://kit.fontawesome.com/54f9cce8ca.js" crossorigin="anonymous"></script>
@@ -28,56 +28,94 @@
     <header class="header">  
         <nav class="navbar navbar-default fixed-top">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="../index.php">Anota Gols</a>
-                <?php
-                if (isset($_SESSION['id'], $_SESSION['nome'], $_SESSION['email'])) {
-                    ?>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <button type="button" onclick="window.location.href = '/view/minhas-informacoes.php'" id="user" class="btn btn-outline-secondary"><?php echo $_SESSION['nome']; ?></button>
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <form method="get" action="publicas.php?nomeArtilharia=<?= $nomeArtilharia ?>" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                    <div class="input-group" id="menuPesquisa">
-                                        <input type="text" name="nomeArtilharia" class="form-control bg-light border-0 small" placeholder="Procurar artilharia..." aria-label="Search" aria-describedby="basic-addon2">
-                                    </div>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="publicas.php">Artilharias Públicas</a>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="minhas-informacoes.php">Minhas Informações</a>
-                                    <a class="dropdown-item" href="pagina-principal.php">Minhas Artilharias</a>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="logout.php">Sair</a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                <?php } else { ?>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <button type="button" onclick="window.location.href = '/view/login.php'" id="user" class="btn btn-outline-secondary">Entrar</button>
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <form method="get" action="/view/publicas.php?nomeArtilharia=<?= $nomeArtilharia ?>" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                    <div class="input-group" id="menuPesquisa">
-                                        <input type="text" name="nomeArtilharia" class="form-control bg-light border-0 small" placeholder="Procurar artilharia..." aria-label="Search" aria-describedby="basic-addon2">
-                                    </div>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item active" href="publicas.php">Artilharias Públicas</a>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="../Cadastro/cadastro.php">Cadastre-se</a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
+                <div class="navbar-header" >
+                    <a href="#" class="navbar-brand" id="logo"> <img src="Imagens/Anota (1).png" alt=""></a>
+                </div>
 
-        </nav>
+                <!-- TODO -->
+                <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Topbar Search -->
+                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group" style="left: -250px">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Pesquise aqui..." aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button" style="height: 38px;">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <?php
+                        session_start();
+                        if (isset($_SESSION['id'], $_SESSION['nome'], $_SESSION['email'])) {
+                            ?>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button type="button" onclick="window.location.href = '/view/minhas-informacoes.php'" id="user" class="btn btn-outline-secondary"><?php echo $_SESSION['nome']; ?></button>
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <form method="get" action="/view/publicas.php?nomeArtilharia=<?= $nomeArtilharia ?>" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                            <div class="input-group" id="menuPesquisa">
+                                                <input type="text" name="nomeArtilharia" class="form-control bg-light border-0 small" placeholder="Procurar artilharia..." aria-label="Search" aria-describedby="basic-addon2">
+                                            </div>
+                                            <div role="separator" class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="view/publicas.php">Artilharias Públicas</a>
+                                            <div role="separator" class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="view/minhas-informacoes.php">Minhas Informações</a>
+                                            <a class="dropdown-item" href="view/pagina-principal.php">Minhas Artilharias</a>
+                                            <div role="separator" class="dropdown-divider"></div>
+                                            <a class="dropdown-item js-scroll-trigger" href="#estrelas">Estrelas</a>
+                                            <a class="dropdown-item js-scroll-trigger" href="#informacoes">Informações</a>
+                                            <div role="separator" class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="view/logout.php">Sair</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        } else {
+                            ?>
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button type="button" onclick="window.location.href = '/view/Login/login.php'" id="user" class="btn btn-outline-secondary">Entrar</button>
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <form method="get" action="/view/publicas.php?nomeArtilharia=<?= $nomeArtilharia ?>" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                            <div class="input-group" id="menuPesquisa">
+                                                <input type="text" name="nomeArtilharia" class="form-control bg-light border-0 small" placeholder="Procurar artilharia..." aria-label="Search" aria-describedby="basic-addon2">
+                                            </div>
+                                        </form>
+                                            <div role="separator" class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="view/publicas.php">Artilharias Públicas</a>
+                                            <div role="separator" class="dropdown-divider"></div>
+                                            <a class="dropdown-item js-scroll-trigger" href="#estrelas">Estrelas</a>
+                                            <a class="dropdown-item js-scroll-trigger" href="#informacoes">Informações</a>
+                                            <div role="separator" class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="view/cadastro.php">Cadastre-se</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
+
+                    </ul>
+                </div>
+                <!--  -->
+
+                <ul class="nav navbar-icones">
+                    <div class="header-buttons text-center">
+                        <a href="/view/Login/login.php" class="btn btn-full">Login</a>
+                        <a href="../Cadastro/cadastro.php" class="btn btn-half">Registre-se</a>
+                    </div>
+                </ul>
             </div>
         </nav>
 
@@ -98,7 +136,10 @@
                     <h3> Controle seu jogo ou alguém controlará por voce! </h4>
                 </div>
 
-                
+                <div class="header-buttons text-center">
+                    <a href="" class="btn btn-full">botão 1</a>
+                    <a href="" class="btn btn-half">botão 2</a>
+                </div>
             </div>
         </div>
     </header>
@@ -111,12 +152,11 @@
         </div>
         <div class="col-md-10">
             <p class="description"> 
-                A equipe Avalon trabalha para sempre estar a frente no mercado e 
-                desenvolver os melhores aplicativos para seus usuários. O nosso
-                mais novo projeto é o Anota Aqui, um aplicativo que cativará todos
-                os amantes de esporte, principalmente se você gosta de futebol e
-                basquete. Caso tenha alguma dúvida ou deseja se comunicar com
-                a equipe de alguma forma, acesse nossas redes sociais.
+               texto texto texto texto texto texto texto 
+               <br>
+               texto texto texto texto texto texto texto 
+               <br>
+               texto texto texto texto texto texto texto 
             </p>
         </div>  
     </section>
