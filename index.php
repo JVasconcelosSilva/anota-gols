@@ -67,10 +67,10 @@
                                                 <input type="text" name="nomeArtilharia" class="form-control bg-light border-0 small" placeholder="Procurar artilharia..." aria-label="Search" aria-describedby="basic-addon2">
                                             </div>
                                             <div role="separator" class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="view/publicas.php">Artilharias Públicas</a>
+                                            <a class="dropdown-item" href="view/Publica/publica.php">Rankings Públicos</a>
                                             <div role="separator" class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="view/minhas-informacoes.php">Minhas Informações</a>
-                                            <a class="dropdown-item" href="view/pagina-principal.php">Minhas Artilharias</a>
+                                            <a class="dropdown-item" href="view/Perfil/perfil.php">Perfil</a>
                                             <div role="separator" class="dropdown-divider"></div>
                                             <a class="dropdown-item js-scroll-trigger" href="#estrelas">Estrelas</a>
                                             <a class="dropdown-item js-scroll-trigger" href="#informacoes">Informações</a>

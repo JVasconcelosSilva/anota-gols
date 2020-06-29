@@ -63,7 +63,7 @@ if ($op == "Alterar")
 <header class="header">  
         <nav class="navbar navbar-default fixed-top">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="../index.php">Anota Gols</a>
+                <a class="navbar-brand js-scroll-trigger" href="../../index.php">Anota Gols</a>
                 <?php
                 if (isset($_SESSION['id'], $_SESSION['nome'], $_SESSION['email'])) {
                     ?>

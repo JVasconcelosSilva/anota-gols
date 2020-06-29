@@ -1,3 +1,8 @@
+<?php
+require __DIR__ . '../../../controller/Artilharia.php';
+session_start();
+$nomeArtilharia = $_GET['nomeArtilharia'] ?? null;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +33,7 @@
 <header class="header">  
         <nav class="navbar navbar-default fixed-top">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="../index.php">Anota Gols</a>
+                <a class="navbar-brand js-scroll-trigger" href="../../index.php">Anota Gols</a>
                 <?php
                 if (isset($_SESSION['id'], $_SESSION['nome'], $_SESSION['email'])) {
                     ?>
@@ -102,20 +107,35 @@
                         <h1 id="esporte">Esporte</h1>
                         
                         <br>
+
+                        
+
                         <div class="container" id="lista">
+
+                        <?php
+                            $query = new Artilharia("artilharia");
+                            $artilharias = $query->getArtilharias();
+                            foreach ($artilharias as $artilharia) {
+                        ?>
                             <div class="row">
                                 <div class="col-sm">
-                                Nome da Artilharia Aqui
+                                <a href="artilharia.php?idArtilharia=<?= $artilharia['id_ranking'] ?>&nmArtilharia=<?= $artilharia['nm_ranking'] ?>"><?= $artilharia['nm_ranking'] ?></a>
                                 </div>
                                 |   
                                 <div class="col-sm">
-                                O Dono da Artilharia
+                                <?= $artilharia['nm_usuario'] ?>
                                 </div>
                                 |
                                 <div class="col-sm">
-                                O Esporte Aqui
+                                    <?php
+                                    if($artilharia['ie_modalidade'] == 0){?>
+                                Basquete
+                                <?php }else if($artilharia['ie_modalidade'] == 1){?>
+                                    Futebol
+                                <?php }?>
                                 </div>
                             </div>
+                            <?php }?>
                         </div>
                     </div>
                 </div>
