@@ -167,14 +167,18 @@ a {
 }
 
 .description{
-    text-align: center;
-    margin-left: 21%;
-    margin-top: 5%;
+    text-align: justify;
+	margin-left: 23%;
+	margin-top: 5%;
+	font-size: 20px;
+	padding: 20px 50px 50px 50px;
 }
 
 .fab{
     color:black;
 }
+
+
 
 /***********************
 *         CAC          *

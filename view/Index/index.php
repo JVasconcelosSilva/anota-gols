@@ -69,7 +69,7 @@
                                     <div role="separator" class="dropdown-divider"></div>
                                     <a class="dropdown-item active" href="publicas.php">Artilharias Públicas</a>
                                     <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="cadastro.php">Cadastre-se</a>
+                                    <a class="dropdown-item" href="../Cadastro/cadastro.php">Cadastre-se</a>
                                 </form>
                             </div>
                         </div>
@@ -111,11 +111,12 @@
         </div>
         <div class="col-md-10">
             <p class="description"> 
-               texto texto texto texto texto texto texto 
-               <br>
-               texto texto texto texto texto texto texto 
-               <br>
-               texto texto texto texto texto texto texto 
+                A equipe Avalon trabalha para sempre estar a frente no mercado e 
+                desenvolver os melhores aplicativos para seus usuários. O nosso
+                mais novo projeto é o Anota Aqui, um aplicativo que cativará todos
+                os amantes de esporte, principalmente se você gosta de futebol e
+                basquete. Caso tenha alguma dúvida ou deseja se comunicar com
+                a equipe de alguma forma, acesse nossas redes sociais.
             </p>
         </div>  
     </section>
