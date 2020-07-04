@@ -64,9 +64,10 @@ if (!is_null($nmEmail)) {
             <p>Confirme a Senha</p>
             <input type="password" name="nmSenha2" placeholder="Confime a senha" required>
             <input type="submit" name="cadastro" value="Cadastrar">
+            <p> Já possui uma conta? <a href="../Login/login.php" id="entrar">Entrar</a> </p>
         </form>
         <?php if(!is_null($e)) { ?>
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-danger" id="alerta" role="alert">
                     <?=$e?>
             </div>
             <?php }?>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="/view/Index/Style.css" type="text/css">
+<link rel="stylesheet" href="view/Index/Style.css" type="text/css">
 <link rel="stylesheet" href="fontes/font-awesome.min.css">
 
 <script src="https://kit.fontawesome.com/54f9cce8ca.js" crossorigin="anonymous"></script>
@@ -31,8 +32,7 @@
                 <div class="navbar-header" >
                     <a href="#" class="navbar-brand" id="logo"> <img src="Imagens/Anota (1).png" alt=""></a>
                 </div>
-
-                <!-- TODO -->
+                <!--
                 <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -40,7 +40,6 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Topbar Search -->
                         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                             <div class="input-group" style="left: -250px">
                                 <input type="text" class="form-control bg-light border-0 small" placeholder="Pesquise aqui..." aria-label="Search" aria-describedby="basic-addon2">
@@ -105,17 +104,9 @@
                                 </div>
                             </div>
                         <?php } ?>
-
+-->
                     </ul>
                 </div>
-                <!--  -->
-
-                <ul class="nav navbar-icones">
-                    <div class="header-buttons text-center">
-                        <a href="/view/Login/login.php" class="btn btn-full">Login</a>
-                        <a href="../Cadastro/cadastro.php" class="btn btn-half">Registre-se</a>
-                    </div>
-                </ul>
             </div>
         </nav>
 
@@ -136,10 +127,12 @@
                     <h3> Controle seu jogo ou alguém controlará por voce! </h4>
                 </div>
 
+<!--
                 <div class="header-buttons text-center">
                     <a href="" class="btn btn-full">botão 1</a>
                     <a href="" class="btn btn-half">botão 2</a>
                 </div>
+-->
             </div>
         </div>
     </header>

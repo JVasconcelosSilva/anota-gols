@@ -68,7 +68,7 @@ if (!is_null($email)) {
             <a href="../Cadastro/cadastro.php">Cadastre-se</a>
         </form>
         <?php if(!is_null($e)) { ?>
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-danger" id="alerta" role="alert">
                     <?=$e?>
             </div>
             <?php }?>
